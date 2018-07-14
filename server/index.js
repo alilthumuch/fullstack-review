@@ -1,7 +1,7 @@
 const express = require('express');
 var bodyParser = require('body-parser');
 var getRepos = require('../helpers/github.js')
-var saveData = require('../database/index.js')
+var mongoData = require('../database/index.js')
 let app = express();
 
 app.use(bodyParser.json());
@@ -14,14 +14,13 @@ app.post('/repos', function (req, res) {
   // This route should take the github username provided
   // and get the repo information from the github API, then
   // save the repo information in the database
-  console.log(Object.keys(req.body)[0])
   // saveData.save(getRepos.getReposByUsername(req.body))
   getRepos.getReposByUsername(Object.keys(req.body)[0], (err, data) => {
   	if (err) {
-  		console.log('ERROR getting repos from github')
+  		console.log(err)
   	} else {
-  		console.log("GITHUB DATA========",data)
-  		saveData.save(data)
+  		mongoData.save(data)
+
   	}
   })
 
@@ -31,6 +30,19 @@ app.get('/repos', function (req, res) {
 	console.log ("AYY SERVER GET")
   // TODO - your code here!
   // This route should send back the top 25 repos
+  // if (err) {
+  // 	console.error("ERROR GETTING DATA")
+  // } else {
+  // 	res.json(req)
+  // }
+  mongoData.getData((err, data) => {
+  	if (err) {
+  		console.log("ERROR GETTING DATA app.get")
+  	} else {
+  		res.json(data)
+  	}
+  })
+  	
 });
 
 let port = 1128;

@@ -13,6 +13,23 @@ class App extends React.Component {
 
   }
 
+  componentDidMount() {
+    $.ajax({
+      type: "GET",
+      url: 'http://localhost:1128/repos',
+      success: (data) => {
+        console.log(this)
+        this.setState({
+          repos: data,
+        })
+      },
+      error: function(data){
+        console.log("ERRRORR")
+      }
+    })
+  }
+
+
   search (term) {
     console.log(`${term} was searched`);
     $.ajax({
@@ -20,7 +37,7 @@ class App extends React.Component {
       url: ' http://localhost:1128/repos',
       data: term,
       success: function(data) {
-        console.log("SUCESS POST")
+        console.log("SUCCESS POST")
       }
     })
   }
