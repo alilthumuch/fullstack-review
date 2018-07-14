@@ -2,20 +2,20 @@ import React from 'react';
 
 const RepoItem = (props) => {
 	return (
-		<div>
-		<td>
+		<tr>
+		<td className = "forks">
 			{props.forks_count}
 		</td>
-		<td>
+		<td className = "props">
 			{props.id}
 		</td>
-		<td>
+		<td className = "forks">
 			{props.repos_url}
 		</td>
-		<td>
+		<td className = "otherstuff">
 			{props.username}
 		</td>
-		</div>
+		</tr>
 	)
 }
 

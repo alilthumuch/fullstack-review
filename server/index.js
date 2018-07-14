@@ -20,7 +20,7 @@ app.post('/repos', function (req, res) {
   		console.log(err)
   	} else {
   		mongoData.save(data)
-
+      res.status(201).send()
   	}
   })
 

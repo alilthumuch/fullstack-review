@@ -1,0 +1,11 @@
+table {
+	border: 2px solid orange;
+}
+
+td {
+	border: 2px solid orange;
+}
+.column {
+	border-spacing: 0;
+	border: 1px solid orange;
+}

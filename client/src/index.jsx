@@ -36,10 +36,21 @@ class App extends React.Component {
       url: ' http://localhost:1128/repos',
       data: term,
       success: (data) => {
-        this.setState({
-          repos: data
-        })
-        console.log(this.state.repos)
+        $.ajax({
+        type: "GET",
+        url: 'http://localhost:1128/repos',
+        success: (data) => {
+          this.setState({
+            repos: data,
+          })
+        },
+        error: function(data){
+          console.log("ERRRORR")
+      }
+    })
+        // this.setState({
+        //   repos: data
+        // })
       }
     })
   }

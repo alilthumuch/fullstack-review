@@ -49,7 +49,7 @@ let getData = (getData) => {
 		} else {
 			getData(err, data)
 		}
-	})
+	}).sort( { forks_count: -1 } )
 }
 
 module.exports.save = save;
