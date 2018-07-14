@@ -8,7 +8,6 @@ let getReposByUsername = (username, cb) => {
   // The options object has been provided to help you out, 
   // but you'll have to fill in the URL
   var userURL = "https://api.github.com/users/" + username +"/repos"
-  console.log("USERURLLLL============", userURL)
   let options = {
     url: userURL,
     headers: {
